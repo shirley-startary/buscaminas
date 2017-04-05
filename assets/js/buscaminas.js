@@ -1,6 +1,16 @@
 //document.getElementById("botones").addEventListener("click",buttonClick);
 var arreglosImagenes=[];
 
+var claseBotones=document.getElementsByClassName("botones");
+
+for(var x=0;x<claseBotones.length;x++)
+{
+  claseBotones[x].addEventListener("click"function(){
+      buttonClick( this );
+    });
+}
+
+
 function bombaInit(){
   var i=0;
   var random;
@@ -20,7 +30,12 @@ function bombaInit(){
 }
 
 function buttonClick(imagen){
+  //console.log(imagen);
   imagen.src=arreglosImagenes[imagen.id];
+  if(arreglosImagenes[imagen.id]=="assets/img/bomba.jpg"){
+    alert("Perdiste");
+    //event.stopPropagation()
+  }
   //alert("hola");
 }
 
