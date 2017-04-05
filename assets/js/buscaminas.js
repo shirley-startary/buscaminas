@@ -3,12 +3,25 @@ var arreglosImagenes=[];
 
 var claseBotones=document.getElementsByClassName("botones");
 
-for(var x=0;x<claseBotones.length;x++)
-{
-  claseBotones[x].addEventListener("click"function(){
-      buttonClick( this );
-    });
+function crearClickEventos(claseBotones){
+  for(var x=0;x<claseBotones.length;x++)
+  {
+    claseBotones[x].addEventListener("click",function(){
+        buttonClick( this );
+      });
+  }
 }
+crearClickEventos(claseBotones);
+
+function quitarClickEventos(claseBotones){
+  for(var x=0;x<claseBotones.length;x++)
+  {
+    claseBotones[x].removeEventListener("click",function(){
+        buttonClick( this );
+      });
+  }
+}
+
 
 
 function bombaInit(){
@@ -34,6 +47,7 @@ function buttonClick(imagen){
   imagen.src=arreglosImagenes[imagen.id];
   if(arreglosImagenes[imagen.id]=="assets/img/bomba.jpg"){
     alert("Perdiste");
+    quitarClickEventos(claseBotones);
     //event.stopPropagation()
   }
   //alert("hola");
